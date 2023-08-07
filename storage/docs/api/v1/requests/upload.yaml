@@ -1,0 +1,200 @@
+post:
+  summary: Upload data
+  tags:
+    - Upload
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              timestamp:
+                type: integer
+              source:
+                type: string
+              folder:
+                type: string
+                nullable: true
+              height:
+                type: integer
+              width:
+                type: integer
+              mime:
+                type: string
+              display:
+                type: object
+                properties:
+                  thumbnail:
+                    type: object
+                    properties:
+                      width:
+                        type: integer
+                      height:
+                        type: integer
+                      src:
+                        type: string
+                  preview:
+                    type: object
+                    properties:
+                      width:
+                        type: integer
+                      height:
+                        type: integer
+                      src:
+                        type: string
+                  square:
+                    type: object
+                    properties:
+                      width:
+                        type: integer
+                      height:
+                        type: integer
+                      src:
+                        type: string
+                  original:
+                    type: object
+                    properties:
+                      width:
+                        type: integer
+                      height:
+                        type: integer
+                      src:
+                        type: string
+              metadata:
+                type: object
+                properties:
+                  gps:
+                    type: string
+                  datetime:
+                    type: integer
+                  name:
+                    type: string
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errorCode:
+                type: integer
+              userMessage:
+                type: string
+              devMessage:
+                type: string
+              more:
+                type: string
+              applicationCode:
+                type: string
+    '403':
+      description: Forbidden - No authentication
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errorCode:
+                type: integer
+              userMessage:
+                type: string
+              devMessage:
+                type: string
+              more:
+                type: string
+              applicationCode:
+                type: string
+    '404':
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errorCode:
+                type: integer
+              userMessage:
+                type: string
+              devMessage:
+                type: string
+              more:
+                type: string
+              applicationCode:
+                type: string
+    '406':
+      description: Not acceptable
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errorCode:
+                type: integer
+              userMessage:
+                type: string
+              devMessage:
+                type: string
+              more:
+                type: string
+              applicationCode:
+                type: string
+    '422':
+      description: Unprocessable content
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errorCode:
+                type: integer
+              userMessage:
+                type: string
+              devMessage:
+                type: string
+              more:
+                type: string
+              applicationCode:
+                type: string
+    '500':
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errorCode:
+                type: integer
+              userMessage:
+                type: string
+              devMessage:
+                type: string
+              more:
+                type: string
+              applicationCode:
+                type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              part:
+                type: integer
+              etag:
+                type: string
+            required:
+              - part
+              - etag
+        example:
+          - part: 1
+            etag: a54357aff0632cce46d942af68356b38
+          - part: 2
+            etag: 0c78aef83f66abc1fa1e8477f296d394
+          - part: 3
+            etag: acbd18db4cc2f85cedef654fccc4a4d8

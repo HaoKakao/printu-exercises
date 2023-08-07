@@ -1,0 +1,22 @@
+openapi: 3.0.0
+info:
+  title: Printu exercises
+  version: '1.0'
+  contact:
+    name: Bartlomiej Wrzesien
+    email: bartlomiej.wrzsn@gmail.com
+  description: Exercise api
+servers:
+  - url: https://printu.test/v1
+    description: Api v1
+paths:
+  '/upload':
+    $ref: ./v1/requests/upload.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer {token}
+security:
+  - bearerAuth: [ ]
